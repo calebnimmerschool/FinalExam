@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\caleb\\Documents\\ASP.Net\\mission11\\backend\\mission11.API\\mission11.API.csproj": {}
+    "C:\\Users\\caleb\\Documents\\ASP.Net\\FinalExam\\backend\\mission11.API\\mission11.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\caleb\\Documents\\ASP.Net\\mission11\\backend\\mission11.API\\mission11.API.csproj": {
+    "C:\\Users\\caleb\\Documents\\ASP.Net\\FinalExam\\backend\\mission11.API\\mission11.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\caleb\\Documents\\ASP.Net\\mission11\\backend\\mission11.API\\mission11.API.csproj",
+        "projectUniqueName": "C:\\Users\\caleb\\Documents\\ASP.Net\\FinalExam\\backend\\mission11.API\\mission11.API.csproj",
         "projectName": "mission11.API",
-        "projectPath": "C:\\Users\\caleb\\Documents\\ASP.Net\\mission11\\backend\\mission11.API\\mission11.API.csproj",
+        "projectPath": "C:\\Users\\caleb\\Documents\\ASP.Net\\FinalExam\\backend\\mission11.API\\mission11.API.csproj",
         "packagesPath": "C:\\Users\\caleb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\caleb\\Documents\\ASP.Net\\mission11\\backend\\mission11.API\\obj\\",
+        "outputPath": "C:\\Users\\caleb\\Documents\\ASP.Net\\FinalExam\\backend\\mission11.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
