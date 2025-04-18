@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Book } from "../types/Book";
+import { Book } from "../types/Entertainer";
 import { addBook } from "../api/ProjectsAPI"; // Adjust path as needed
 
 

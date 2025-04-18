@@ -5,17 +5,16 @@ function CategoryFilter ({selectedCategories, setSelectedCategories}: {selectedC
     const [categories, setCategories] = useState<string[]>([]);
     
 
-    useEffect (() => {
+    useEffect(() => {
         const fetchCategories = async () => {
-            const response = await fetch('https://bookproject3-nimmer-backend-e6dreybneefkeeck.eastus2-01.azurewebsites.net/api/Book/GetBookTypes');
+            const response = await fetch('https://your-backend.azurewebsites.net/api/Entertainer/GetCities');
             const data = await response.json();
-
             setCategories(data);
-        }
-
+        };
+    
         fetchCategories();
-
     }, []);
+    
 
     function handleCheckboxChange ({target} : {target: HTMLInputElement}) {
         const updatedCategories = selectedCategories.includes(target.value) ? selectedCategories.filter((x) => x !== target.value) :[...selectedCategories, target.value];
@@ -25,7 +24,7 @@ function CategoryFilter ({selectedCategories, setSelectedCategories}: {selectedC
 
     return (
         <div>
-            <h5>Book Types</h5>
+            <h5>Filter by City</h5>
             <div>
                 {categories.map((c) => (
                     <div key={c}>

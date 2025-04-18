@@ -1,32 +1,27 @@
 import React from "react";
-import BooksPage from "./pages/BooksPage";
-import AddBook from "./pages/AddBook";
-import CartPage from "./pages/CartPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./context/CartContext";
-import AdminBooksPage from "./pages/AdminBooksPage";
 
+// Pages
+import LandingPage from "./pages/LandingPage";
+import EntertainersPage from "./pages/EntertainersPage";
+import AddEntertainerPage from "./pages/AddEntertainer";
+import EntertainerDetailsPage from "./pages/Details";
+
+// Components
+import Navbar from "./components/Navbar"; // ✅ Import the new navbar
 
 const App: React.FC = () => {
-
-   
-
     return (
-    <>
-        <CartProvider>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<BooksPage />} />
-                    <Route path="/addBook/:title/:bookID/:price" element={<AddBook />} />
-                    <Route path="/CartPage" element={<CartPage />} />
-                    <Route path="/AdminPage" element={<AdminBooksPage />} />
-                </Routes>
-            </Router>
-        </CartProvider>
-    </>
+        <Router>
+            <Navbar /> {/* ✅ Add Navbar here */}
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/entertainers" element={<EntertainersPage />} />
+                <Route path="/entertainers/add" element={<AddEntertainerPage />} />
+                <Route path="/entertainers/:id" element={<EntertainerDetailsPage />} />
+            </Routes>
+        </Router>
     );
 };
 
 export default App;
-
-

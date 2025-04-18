@@ -1,28 +1,29 @@
-import { Book } from "../types/Book"
+import { Entertainer } from "../types/Entertainer";
 
-interface FetchProjectsResponse {
-    books: Book[];
-    totalNumBooks: number;
+interface FetchEntertainersResponse {
+    entertainers: Entertainer[];
+    totalNumEntertainers: number;
 }
 
-const API_URL = "https://bookproject3-nimmer-backend-e6dreybneefkeeck.eastus2-01.azurewebsites.net/api";
+// 🔁 Replace this with your actual deployed API URL
+const API_URL = "http://localhost:5019/api";
 
-export const fetchProjects = async (
+export const fetchEntertainers = async (
     pageSize: number,
     pageNum: number,
     selectedCategories: string[],
     sortOrder: "asc" | "desc"
-): Promise<FetchProjectsResponse> => {
+): Promise<FetchEntertainersResponse> => {
     const categoryParams = selectedCategories.map((cat) => `projectTypes=${encodeURIComponent(cat)}`).join('&');
 
     const response = await fetch(
-        `${API_URL}/Book?pageHowMany=${pageSize}&pageNum=${pageNum}&sortBy=title&sortOrder=${sortOrder}${
+        `${API_URL}/Entertainer?pageHowMany=${pageSize}&pageNum=${pageNum}&sortBy=EntStageName&sortOrder=${sortOrder}${
             selectedCategories.length ? `&${categoryParams}` : ''
         }`
     );
 
     if (!response.ok) {
-        throw new Error("Failed to fetch book data");
+        throw new Error("Failed to fetch entertainer data");
     }
 
     const data = await response.json();
@@ -31,54 +32,51 @@ export const fetchProjects = async (
     return data;
 };
 
-export const addBook = async (newBook: Book): Promise<Book> => {
-    try {
-        const response = await fetch (`${API_URL}/Book/AddBook`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newBook)
-        });
+import { EntertainerInput } from "../types/Entertainer";
 
-        if (!response.ok) {
-            throw new Error('Failed to add new book');
-        }
+export const addEntertainer = async (newEntertainer: EntertainerInput): Promise<Entertainer> => {
+    const response = await fetch(`${API_URL}/Entertainer/AddEntertainer`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newEntertainer)
+    });
 
-        return await response.json();
-    } catch(error) {
-        console.error('Error adding book', error);
-        throw error;
+    if (!response.ok) {
+        throw new Error("Failed to add entertainer");
     }
+
+    return await response.json();
 };
 
-export const updateBook = async (bookId: number, updatedBook: Book) : Promise<Book> => {
+export const updateEntertainer = async (entertainerId: number, updatedEntertainer: Entertainer): Promise<Entertainer> => {
     try {
-        const response = await fetch (`${API_URL}/Book/UpdateBook/${bookId}`, {
+        const response = await fetch(`${API_URL}/Entertainer/UpdateEntertainer/${entertainerId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedBook)
+            body: JSON.stringify(updatedEntertainer)
         });
 
         return await response.json();
-    } catch(error) {
-        console.error('Error editing book', error);
+    } catch (error) {
+        console.error('Error editing entertainer', error);
         throw error;
     }
 };
 
-export const deleteBook = async (bookId: number) : Promise<void> => {
+export const deleteEntertainer = async (entertainerId: number): Promise<void> => {
     try {
-        const response = await fetch (`${API_URL}/Book/DeleteBook/${bookId}`, {
+        const response = await fetch(`${API_URL}/Entertainer/DeleteEntertainer/${entertainerId}`, {
             method: 'DELETE'
         });
         if (!response.ok) {
-            throw new Error('Failed to delete book');
+            throw new Error('Failed to delete entertainer');
         }
-    } catch(error) {
-        console.error('Error deleting book', error);
+    } catch (error) {
+        console.error('Error deleting entertainer', error);
         throw error;
     }
-}
+};
