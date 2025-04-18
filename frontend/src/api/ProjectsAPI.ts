@@ -6,7 +6,7 @@ interface FetchEntertainersResponse {
 }
 
 // 🔁 Replace this with your actual deployed API URL
-const API_URL = "http://localhost:5019/api";
+const API_URL = "https://finalexam-backend-gwdna9d3c8cxgbfc.eastus2-01.azurewebsites.net/api";
 
 export const fetchEntertainers = async (
     pageSize: number,
